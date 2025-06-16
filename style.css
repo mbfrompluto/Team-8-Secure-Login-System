@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #111;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00acee;
+}
+
+.user-auth .login-btn-modal {
+  padding: 8px 20px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.user-auth .login-btn-modal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+
+section h1 {
+  font-size: 36px;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+.auth-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  max-width: 90%;
+  display: none;
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.auth-modal.active {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.close-btn-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn-modal:hover {
+  color: #00acee;
+}
+
+.form-box {
+  display: none;
+}
+
+.form-box.active {
+  display: block;
+  animation: slideIn 0.3s;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.input-box {
+  margin: 20px 0;
+  position: relative;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #00acee;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 172, 238, 0.2);
+}
+
+.input-box i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #00acee;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background: #0095d6;
+  transform: translateY(-2px);
+}
+
+.form-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.form-links p {
+  margin: 10px 0;
+}
+
+.form-links a {
+  color: #00acee;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.form-links a:hover {
+  text-decoration: underline;
+}
+
+.security-indicator {
+  margin: 15px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.security-bar {
+  height: 5px;
+  background: #ff4444;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: all 0.3s;
+}
+
+.security-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.security-info {
+  margin-top: 25px;
+  padding: 15px;
+  background: rgba(0, 172, 238, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.security-icon {
+  margin-right: 10px;
+  color: #00acee;
+  font-size: 20px;
+}
+
+/* Password strength indicators */
+.security-bar.weak {
+  background: #ff4444;
+  width: 25%;
+}
+
+.security-bar.moderate {
+  background: #ffbb33;
+  width: 50%;
+}
+
+.security-bar.strong {
+  background: #00C851;
+  width: 75%;
+}
+
+.security-bar.very-strong {
+  background: #00C851;
+  width: 100%;
+}
+
+
+@media (max-width: 480px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  nav {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  nav a {
+    margin: 5px 10px 5px 0;
+  }
+  
+  .user-auth {
+    margin-top: 15px;
+  }
+  
+  section h1 {
+    font-size: 28px;
+    padding: 0 20px;
+  }
+  
+  .auth-modal {
+    padding: 20px;
+    width: 90%;
+  }
+}

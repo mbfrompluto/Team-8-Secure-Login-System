@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Login System</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">SecureAuth</a>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Security</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="user-auth">
+      <button class="login-btn-modal">Login</button>
+    </div>
+  </header>
+
+  <section>
+    <h1>Secure Authentication System</h1>
+  </section>
+
+  <div class="auth-modal">
+    <button class="close-btn-modal">&times;</button>
+
+    <div class="form-box login active">
+      <h2>Secure Login</h2>
+      <form id="loginForm">
+        <div class="input-box">
+          <input type="email" placeholder="Email" required id="loginEmail" />
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" required id="loginPassword" />
+          <i class='bx bxs-lock'></i>
+        </div>
+        <div class="security-indicator" id="loginSecurityIndicator">
+          <div class="security-bar"></div>
+          <span class="security-text">Password strength</span>
+        </div>
+        <button class="btn" type="submit">Login Securely</button>
+        <div class="form-links">
+          <p>Don't have an account? <a href="#" class="switch-to-register">Register</a></p>
+          <p><a href="#" class="switch-to-forgot">Forgot password?</a></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-box register">
+      <h2>Secure Registration</h2>
+      <form id="registerForm">
+        <div class="input-box">
+          <input type="text" placeholder="Full Name" required id="registerName" />
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="email" placeholder="Email" required id="registerEmail" />
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Password" required id="registerPassword" />
+          <i class='bx bxs-lock'></i>
+        </div>
+        <div class="security-indicator" id="registerSecurityIndicator">
+          <div class="security-bar"></div>
+          <span class="security-text">Password strength</span>
+        </div>
+        <div class="input-box">
+          <input type="password" placeholder="Confirm Password" required id="registerConfirmPassword" />
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button class="btn" type="submit">Register Securely</button>
+        <div class="form-links">
+          <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-box forgot">
+      <h2>Password Recovery</h2>
+      <form id="forgotForm">
+        <div class="input-box">
+          <input type="email" placeholder="Email" required id="forgotEmail" />
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <button class="btn" type="submit">Reset Password</button>
+        <div class="form-links">
+          <p><a href="#" class="switch-to-login">Back to Login</a></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="security-info">
+      <div class="security-icon">
+        <i class='bx bxs-shield-alt'></i>
+      </div>
+      <p>Your security is our priority. All data is encrypted.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
