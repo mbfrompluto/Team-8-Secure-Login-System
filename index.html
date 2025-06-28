@@ -8,6 +8,13 @@
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
+  <div class="moving-background">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 
   <header>
     <a href="#" class="logo">SecureAuth</a>
@@ -18,18 +25,20 @@
       <a href="#">Contact</a>
     </nav>
     <div class="user-auth">
+      <button class="signup-btn-modal">Sign Up</button>
       <button class="login-btn-modal">Login</button>
     </div>
   </header>
 
   <section>
     <h1>Secure Authentication System</h1>
+    <button class="cta-btn">Register Now</button>
   </section>
 
   <div class="auth-modal">
     <button class="close-btn-modal">&times;</button>
 
-    <div class="form-box login active">
+    <div class="form-box login">
       <h2>Secure Login</h2>
       <form id="loginForm">
         <div class="input-box">
@@ -90,6 +99,24 @@
           <i class='bx bxs-envelope'></i>
         </div>
         <button class="btn" type="submit">Reset Password</button>
+        <div class="form-links">
+          <p><a href="#" class="switch-to-login">Back to Login</a></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-box otp">
+      <h2>OTP Verification</h2>
+      <form id="otpForm">
+        <div class="input-box">
+          <input type="text" placeholder="Enter OTP" required id="otpCode" maxlength="6" />
+          <i class='bx bxs-key'></i>
+        </div>
+        <div class="form-links">
+          <p>We've sent a 6-digit code to your email</p>
+          <p>Didn't receive code? <a href="#" id="resendOtp">Resend OTP</a></p>
+        </div>
+        <button class="btn" type="submit">Verify & Login</button>
         <div class="form-links">
           <p><a href="#" class="switch-to-login">Back to Login</a></p>
         </div>
