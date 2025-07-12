@@ -1,136 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Secure Login System</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .spline-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+
+    spline-viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+      position: relative;
+    }
+
+    header .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    .user-auth button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    section {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 5;
+    }
+
+    section h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      padding: 10px 24px;
+      background-color: #534f4f;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    .auth-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(94, 80, 80, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .form-box {
+      background: #111;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      width: 350px;
+      display: none;
+      color: #fff;
+    }
+
+    .form-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input-box input {
+      width: 90%;
+      padding: 10px 10px 10px 35px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 5px;
+    }
+
+    .input-box i {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #999;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .form-links {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .form-links a {
+      color: #4aa3ff;
+      text-decoration: none;
+    }
+
+    .close-btn-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      color: rgb(85, 81, 81);
+      font-size: 30px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.24/build/spline-viewer.js"></script>
 </head>
 <body>
-  <div class="moving-background">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+<?php session_start(); ?>
+
+<div class="spline-container">
+  <spline-viewer url="https://prod.spline.design/Mi3j0Cwmk4S4IFh0/scene.splinecode"></spline-viewer>
+</div>
+
+<header>
+  <a href="#" class="logo">SecureAuth</a>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Security</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="user-auth">
+    <button class="signup-btn-modal">Sign Up</button>
+    <button class="login-btn-modal">Login</button>
   </div>
+</header>
 
-  <header>
-    <a href="#" class="logo">SecureAuth</a>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Features</a>
-      <a href="#">Security</a>
-      <a href="#">Contact</a>
-    </nav>
-    <div class="user-auth">
-      <button class="signup-btn-modal">Sign Up</button>
-      <button class="login-btn-modal">Login</button>
-    </div>
-  </header>
+<section>
+  <h1>Secure Authentication System</h1>
+  <button class="cta-btn">Register Now</button>
+</section>
 
-  <section>
-    <h1>Secure Authentication System</h1>
-    <button class="cta-btn">Register Now</button>
-  </section>
+<div class="auth-modal">
+  <button class="close-btn-modal">&times;</button>
 
-  <div class="auth-modal">
-    <button class="close-btn-modal">&times;</button>
-
-    <div class="form-box login">
-      <h2>Secure Login</h2>
-      <form id="loginForm">
-        <div class="input-box">
-          <input type="email" placeholder="Email" required id="loginEmail" />
-          <i class='bx bxs-envelope'></i>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Password" required id="loginPassword" />
-          <i class='bx bxs-lock'></i>
-        </div>
-        <div class="security-indicator" id="loginSecurityIndicator">
-          <div class="security-bar"></div>
-          <span class="security-text">Password strength</span>
-        </div>
-        <button class="btn" type="submit">Login Securely</button>
-        <div class="form-links">
-          <p>Don't have an account? <a href="#" class="switch-to-register">Register</a></p>
-          <p><a href="#" class="switch-to-forgot">Forgot password?</a></p>
-        </div>
-      </form>
-    </div>
-
-    <div class="form-box register">
-      <h2>Secure Registration</h2>
-      <form id="registerForm">
-        <div class="input-box">
-          <input type="text" placeholder="Full Name" required id="registerName" />
-          <i class='bx bxs-user'></i>
-        </div>
-        <div class="input-box">
-          <input type="email" placeholder="Email" required id="registerEmail" />
-          <i class='bx bxs-envelope'></i>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Password" required id="registerPassword" />
-          <i class='bx bxs-lock'></i>
-        </div>
-        <div class="security-indicator" id="registerSecurityIndicator">
-          <div class="security-bar"></div>
-          <span class="security-text">Password strength</span>
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Confirm Password" required id="registerConfirmPassword" />
-          <i class='bx bxs-lock-alt'></i>
-        </div>
-        <button class="btn" type="submit">Register Securely</button>
-        <div class="form-links">
-          <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
-        </div>
-      </form>
-    </div>
-
-    <div class="form-box forgot">
-      <h2>Password Recovery</h2>
-      <form id="forgotForm">
-        <div class="input-box">
-          <input type="email" placeholder="Email" required id="forgotEmail" />
-          <i class='bx bxs-envelope'></i>
-        </div>
-        <button class="btn" type="submit">Reset Password</button>
-        <div class="form-links">
-          <p><a href="#" class="switch-to-login">Back to Login</a></p>
-        </div>
-      </form>
-    </div>
-
-    <div class="form-box otp">
-      <h2>OTP Verification</h2>
-      <form id="otpForm">
-        <div class="input-box">
-          <input type="text" placeholder="Enter OTP" required id="otpCode" maxlength="6" />
-          <i class='bx bxs-key'></i>
-        </div>
-        <div class="form-links">
-          <p>We've sent a 6-digit code to your email</p>
-          <p>Didn't receive code? <a href="#" id="resendOtp">Resend OTP</a></p>
-        </div>
-        <button class="btn" type="submit">Verify & Login</button>
-        <div class="form-links">
-          <p><a href="#" class="switch-to-login">Back to Login</a></p>
-        </div>
-      </form>
-    </div>
-
-    <div class="security-info">
-      <div class="security-icon">
-        <i class='bx bxs-shield-alt'></i>
+  <div class="form-box login">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-box">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <i class='bx bxs-envelope'></i>
       </div>
-      <p>Your security is our priority. All data is encrypted.</p>
-    </div>
+      <div class="input-box">
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <i class='bx bxs-lock'></i>
+      </div>
+      <button class="btn" type="submit">Login</button>
+      <div class="form-links">
+        <p>Don't have an account? <a href="#" class="switch-to-register">Register</a></p>
+      </div>
+    </form>
   </div>
 
-  <script src="script.js"></script>
+  <div class="form-box register">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <div class="input-box">
+        <input type="text" id="registerName" placeholder="Full Name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="email" id="registerEmail" placeholder="Email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <i class='bx bxs-lock'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <button class="btn" type="submit">Register</button>
+      <div class="form-links">
+        <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+      </div>
+    </form>
+  </div>
+
+  <div class="form-box otp">
+    <h2>Verify OTP</h2>
+    <form id="otpForm">
+      <div class="input-box">
+        <input type="text" id="otpInput" placeholder="Enter OTP" required>
+        <i class="bx bxs-key"></i>
+      </div>
+      <div class="form-links">
+        <span id="otp-timer">300s left</span>
+      </div>
+      <button class="btn" type="submit">Verify</button>
+      <div style="text-align:center; margin-top:10px;">
+        <button class="btn" type="button" id="resendOtpBtn">Resend OTP</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const modal = document.querySelector('.auth-modal');
+  const loginBtn = document.querySelector('.login-btn-modal');
+  const registerBtn = document.querySelector('.signup-btn-modal');
+  const ctaBtn = document.querySelector('.cta-btn');
+  const closeModal = document.querySelector('.close-btn-modal');
+  const formBoxes = document.querySelectorAll('.form-box');
+  const switchToRegister = document.querySelectorAll('.switch-to-register');
+  const switchToLogin = document.querySelectorAll('.switch-to-login');
+
+  loginBtn.onclick = () => showForm('login');
+  registerBtn.onclick = () => showForm('register');
+  ctaBtn.onclick = () => showForm('register');
+  closeModal.onclick = () => modal.style.display = 'none';
+
+  switchToRegister.forEach(el => el.onclick = () => showForm('register'));
+  switchToLogin.forEach(el => el.onclick = () => showForm('login'));
+
+  function showForm(formName) {
+    modal.style.display = 'flex';
+    formBoxes.forEach(fb => fb.style.display = 'none');
+    const target = document.querySelector(`.form-box.${formName}`);
+    if (target) target.style.display = 'block';
+
+    if (formName === 'otp') {
+      let seconds = 300;
+      const timer = setInterval(() => {
+        const timerEl = document.getElementById("otp-timer");
+        if (!timerEl) return clearInterval(timer);
+        if (seconds <= 0) {
+          clearInterval(timer);
+          timerEl.textContent = "OTP expired";
+        } else {
+          timerEl.textContent = `${seconds--}s left`;
+        }
+      }, 1000);
+    }
+  }
+
+  document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('registerName').value.trim();
+    const email = document.getElementById('registerEmail').value.trim();
+    const password = document.getElementById('registerPassword').value;
+    const confirm = document.getElementById('registerConfirmPassword').value;
+
+    if (password !== confirm) return alert("Passwords do not match");
+
+    const response = await fetch('register.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password })
+    });
+    const result = await response.json();
+    alert(result.message);
+    if (result.redirect_to_otp) {
+      sessionStorage.setItem('secureauth_email', email);
+      showForm('otp');
+    }
+  });
+
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    const response = await fetch('login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    const result = await response.json();
+    alert(result.message);
+    if (result.redirect_to_otp) {
+      sessionStorage.setItem('secureauth_email', email);
+      showForm('otp');
+    }
+  });
+
+  document.getElementById('otpForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const otp = document.getElementById('otpInput').value.trim();
+    const email = sessionStorage.getItem('secureauth_email');
+
+    const response = await fetch('verify-otp.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ otp, email })
+    });
+    const result = await response.json();
+    alert(result.message);
+    if (result.redirect_to_dashboard) window.location.href = 'dashboard.php';
+  });
+
+  document.getElementById('resendOtpBtn').addEventListener('click', async () => {
+    const email = sessionStorage.getItem('secureauth_email');
+    if (!email) return alert("Email not found in session.");
+
+    const response = await fetch('resend_otp.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const result = await response.json();
+    alert(result.message);
+    if (result.success) showForm('otp');
+  });
+</script>
 </body>
 </html>
