@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SecureAuth - Secure Authentication System</title>
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="bg-grid"></div>
+  <div class="interactive-bg">
+    <div class="bg-grid"></div>
+  </div>
 
   <header>
     <a href="#" class="logo">SecureAuth</a>
     <nav>
       <a href="#">Home</a>
       <a href="#">Security</a>
+      <a href="#">Privacy</a>
       <a href="#">Contact</a>
     </nav>
     <div class="user-auth">
-      <button class="login-btn">Login</button>
-      <button class="register-btn">Register</button>
+      <button class="login-btn-modal border-btn">
+        <span>Login</span>
+        <div class="border"></div>
+      </button>
+      <button class="signup-btn-modal border-btn">
+        <span>Sign Up</span>
+        <div class="border"></div>
+      </button>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Secure Authentication System</h1>
-      <p>Protecting your digital identity with advanced security measures</p>
-      <div class="cta-wrapper">
-        <button class="cta-btn">Get Started</button>
-        <span class="moving-border"></span>
-      </div>
-    </section>
-  </main>
+  <section>
+    <h1>Secure Authentication System</h1>
+    <p>Protecting your digital identity with advanced security measures</p>
+    <button class="cta-btn border-btn">
+      <span>Get Started</span>
+      <div class="border"></div>
+    </button>
+  </section>
 
   <div class="auth-modal">
-    <button class="close-btn">&times;</button>
+    <button class="close-btn-modal">&times;</button>
 
     <div class="form-box login">
       <h2>Login</h2>
@@ -48,10 +55,19 @@
           <input type="password" id="loginPassword" placeholder="Password" required>
           <i class='bx bxs-lock'></i>
         </div>
-        <div class="form-footer">
+        <div class="form-links">
           <a href="#" class="forgot-password">Forgot password?</a>
-          <button class="submit-btn" type="submit">Login</button>
-          <p>Don't have an account? <a href="#" class="switch-to-register">Register</a></p>
+        </div>
+        <button class="btn border-btn" type="submit">
+          <span>Login</span>
+          <div class="border"></div>
+        </button>
+        <div class="account-switch">
+          <p>Don't have an account?</p>
+          <button class="switch-to-register border-btn">
+            <span>Register</span>
+            <div class="border"></div>
+          </button>
         </div>
       </form>
     </div>
@@ -73,15 +89,49 @@
         </div>
         <div class="password-strength">
           <div id="password-strength-bar" class="strength-bar strength-0"></div>
-          <div id="password-strength-text">Password Strength: Very Weak</div>
+          <div id="password-strength-text" class="strength-text">Password Strength: Very Weak</div>
         </div>
         <div class="input-box">
           <input type="password" id="registerConfirmPassword" placeholder="Confirm Password" required>
           <i class='bx bxs-lock-alt'></i>
         </div>
-        <div class="form-footer">
-          <button class="submit-btn" type="submit">Register</button>
-          <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+        <div class="security-info">
+          <i class='bx bxs-shield-alt security-icon'></i>
+          <span>We use end-to-end encryption to protect your data</span>
+        </div>
+        <button class="btn border-btn" type="submit">
+          <span>Register</span>
+          <div class="border"></div>
+        </button>
+        <div class="account-switch">
+          <p>Already have an account?</p>
+          <button class="switch-to-login border-btn">
+            <span>Login</span>
+            <div class="border"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-box otp">
+      <h2>Verify OTP</h2>
+      <form id="otpForm">
+        <div class="input-box">
+          <input type="text" id="otpCode" placeholder="Enter 6-digit OTP" maxlength="6" required>
+          <i class="bx bxs-key"></i>
+        </div>
+        <div class="form-links">
+          <span id="otp-timer">300s left</span>
+        </div>
+        <button class="btn border-btn" type="submit">
+          <span>Verify</span>
+          <div class="border"></div>
+        </button>
+        <div class="resend-otp">
+          <button class="btn secondary border-btn" type="button" id="resendOtpBtn">
+            <span>Resend OTP</span>
+            <div class="border"></div>
+          </button>
         </div>
       </form>
     </div>
