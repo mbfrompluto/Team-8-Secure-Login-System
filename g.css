@@ -118,7 +118,7 @@ body {
 
 .btn-border-wrapper::after {
   content: '';
-  position: absolute;
+  position: relative;
   inset: 2px;
   background: #4a7c59;
   border-radius: 4px;
