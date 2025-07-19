@@ -391,3 +391,114 @@ section p {
     margin: 20px;
   }
 }
+.border-btn {
+  position: relative;
+  background: transparent;
+  color: #4a7c59;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.border-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.border-btn .border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #4a7c59;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.border-btn:hover .border {
+  border-color: #3a6a49;
+  box-shadow: 0 0 10px rgba(74, 124, 89, 0.3);
+}
+
+.border-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4a7c59;
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.border-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.border-btn:hover {
+  color: white;
+}
+.form-box.register button[type="submit"] {
+  display: block;
+  margin: 20px auto 0;
+}
+.no-border {
+  background: #4a7c59;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: none;
+  box-shadow: none;
+}
+.no-border:hover {
+  background: #4a7c59; /* No hover effect */
+}
+.sage-text-btn {
+  background: transparent;
+  color: #4a7c59; /* sage green */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+  transition: none;
+}
+
+.sage-text-btn:hover {
+  color: #4a7c59; /* no change on hover */
+  background: transparent;
+}
+.account-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.account-switch p {
+  margin: 0;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.account-switch .sage-text-btn {
+  margin-top: 0;
+  padding: 6px 16px;
+  font-size: 14px;
+}
